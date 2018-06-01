@@ -32,6 +32,18 @@ func StrListContains(haystack []string, needle string) bool {
 	return false
 }
 
+// StrListContainsWildcard looks for a regex in a list of strings.
+func StrListContainsWildcard(haystack []string, needle string) bool {
+	var result bool
+	for _, item := range haystack {
+		if GlobbedStringsMatch(item, needle) {
+			result = true
+			break
+		}
+	}
+	return result
+}
+
 // StrListSubset checks if a given list is a subset
 // of another set
 func StrListSubset(super, sub []string) bool {
