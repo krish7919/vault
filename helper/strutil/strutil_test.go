@@ -531,3 +531,47 @@ func TestDifference(t *testing.T) {
 		})
 	}
 }
+
+func TestStrutil_ListContainsWildcard(t *testing.T) {
+	haystack := []string{
+		"dev",
+		"ops*",
+		"*ops",
+		"root/*",
+		"*/root",
+		"*-dev",
+		"dev-*",
+		"_*_",
+	}
+	if StrListContainsWildcard(haystack, "not-existing-value") {
+		t.Fatalf("Value shouldn't exist")
+	}
+	if StrListContainsGlob(haystack, "_test_") {
+		t.Fatalf("Value shouldn't exist")
+	}
+
+	if !StrListContainsWildcard(haystack, "root/test") {
+		t.Fatalf("Value should exist")
+	}
+	if !StrListContainsWildcard(haystack, "test/root") {
+		t.Fatalf("Value should exist")
+	}
+	if !StrListContainsWildcard(haystack, "ops_test") {
+		t.Fatalf("Value should exist")
+	}
+	if !StrListContainsWildcard(haystack, "test_ops") {
+		t.Fatalf("Value should exist")
+	}
+	if !StrListContainsWildcard(haystack, "ops") {
+		t.Fatalf("Value should exist")
+	}
+	if !StrListContainsWildcard(haystack, "dev") {
+		t.Fatalf("Value should exist")
+	}
+	if !StrListContainsWildcard(haystack, "test-dev") {
+		t.Fatalf("Value should exist")
+	}
+	if !StrListContainsWildcard(haystack, "dev-test") {
+		t.Fatalf("Value should exist")
+	}
+}
