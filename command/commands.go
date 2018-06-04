@@ -38,7 +38,6 @@ import (
 	credAzure "github.com/hashicorp/vault-plugin-auth-azure/plugin"
 	credCentrify "github.com/hashicorp/vault-plugin-auth-centrify"
 	credGcp "github.com/hashicorp/vault-plugin-auth-gcp/plugin"
-	credKube "github.com/hashicorp/vault-plugin-auth-kubernetes"
 	credAppId "github.com/hashicorp/vault/builtin/credential/app-id"
 	credAppRole "github.com/hashicorp/vault/builtin/credential/approle"
 	credAws "github.com/hashicorp/vault/builtin/credential/aws"
@@ -49,6 +48,7 @@ import (
 	credRadius "github.com/hashicorp/vault/builtin/credential/radius"
 	credToken "github.com/hashicorp/vault/builtin/credential/token"
 	credUserpass "github.com/hashicorp/vault/builtin/credential/userpass"
+	credKube "github.com/krish7919/vault-plugin-auth-kubernetes"
 
 	physAzure "github.com/hashicorp/vault/physical/azure"
 	physCassandra "github.com/hashicorp/vault/physical/cassandra"

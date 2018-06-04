@@ -6,11 +6,13 @@ import (
 	"crypto/rsa"
 	"errors"
 	"fmt"
+	log "github.com/hashicorp/go-hclog"
 
 	"github.com/SermoDigital/jose/crypto"
 	"github.com/SermoDigital/jose/jws"
 	"github.com/SermoDigital/jose/jwt"
 	multierror "github.com/hashicorp/go-multierror"
+	"github.com/hashicorp/vault/helper/cidrutil"
 	"github.com/hashicorp/vault/helper/strutil"
 	"github.com/hashicorp/vault/logical"
 	"github.com/hashicorp/vault/logical/framework"
@@ -77,6 +79,11 @@ func (b *kubeAuthBackend) pathLogin() framework.OperationFunc {
 			return logical.ErrorResponse(fmt.Sprintf("invalid role name \"%s\"", roleName)), nil
 		}
 
+		// Check for a CIDR match.
+		if req.Connection != nil && !cidrutil.RemoteAddrIsOk(req.Connection.RemoteAddr, role.BoundCIDRs) {
+			return logical.ErrorResponse("request originated from invalid CIDR"), nil
+		}
+
 		config, err := b.config(ctx, req.Storage)
 		if err != nil {
 			return nil, err
@@ -120,6 +127,7 @@ func (b *kubeAuthBackend) pathLogin() framework.OperationFunc {
 					TTL:       role.TTL,
 					MaxTTL:    role.MaxTTL,
 				},
+				BoundCIDRs: role.BoundCIDRs,
 			},
 		}
 
@@ -184,9 +192,10 @@ func (b *kubeAuthBackend) parseAndValidateJWT(jwtStr string, role *roleStorageEn
 				}
 			}
 
+			log.Default().Info(fmt.Sprintf("using wildcard to match service account"))
 			// verify the service account name is allowed
 			if len(role.ServiceAccountNames) > 1 || role.ServiceAccountNames[0] != "*" {
-				if !strutil.StrListContains(role.ServiceAccountNames, sa.Name) {
+				if !strutil.StrListContainsWildcard(role.ServiceAccountNames, sa.Name) {
 					return errors.New("service account name not authorized")
 				}
 			}
