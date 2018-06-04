@@ -1703,7 +1703,13 @@
 			"revisionTime": "2018-05-06T08:24:08Z"
 		},
 		{
-			"checksumSHA1": "xvqMCXXlR74in/1c09UadpfXz9Y=",
+			"checksumSHA1": "g5rSTESMac+JdmmWXK1UPAmipTc=",
+			"path": "github.com/krish7919/vault-plugin-auth-kubernetes",
+			"revision": "fcd69aa4ae3363100447085d9a6e92958eab1bd8",
+			"revisionTime": "2018-06-04T18:01:33Z"
+		},
+		{
+			"checksumSHA1": "V1a5/Ra9HXKNuArt5WKUqu+Jxt8=",
 			"path": "github.com/lib/pq",
 			"revision": "4ded0e9383f75c197b3a2aaa6d590ac52df6fd79",
 			"revisionTime": "2018-08-23T06:29:44Z"
