@@ -34,7 +34,6 @@ import (
 	credOkta "github.com/hashicorp/vault/builtin/credential/okta"
 	credToken "github.com/hashicorp/vault/builtin/credential/token"
 	credUserpass "github.com/hashicorp/vault/builtin/credential/userpass"
-	credKube "github.com/krish7919/vault-plugin-auth-kubernetes"
 
 	logicalKv "github.com/hashicorp/vault-plugin-secrets-kv"
 	logicalDb "github.com/hashicorp/vault/builtin/logical/database"
