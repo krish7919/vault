@@ -1413,12 +1413,6 @@
 			"revisionTime": "2018-10-31T19:59:42Z"
 		},
 		{
-			"checksumSHA1": "Ldg2jQeyPrpAupyQq4lRVN+jfFY=",
-			"path": "github.com/hashicorp/vault-plugin-auth-kubernetes",
-			"revision": "091d9e5d5fabce920533eff31ad778778992a671",
-			"revisionTime": "2018-11-30T16:25:33Z"
-		},
-		{
 			"checksumSHA1": "PmhyvCKVlEMEP6JO31ozW+CBIiE=",
 			"path": "github.com/hashicorp/vault-plugin-secrets-ad/plugin",
 			"revision": "540c0b6f1f113a1c6bdaa130a35ee8530c072b5a",
@@ -1703,10 +1697,10 @@
 			"revisionTime": "2018-05-06T08:24:08Z"
 		},
 		{
-			"checksumSHA1": "g5rSTESMac+JdmmWXK1UPAmipTc=",
+			"checksumSHA1": "JcwqVK2UX5EEwDVd2dVS67n4nEA=",
 			"path": "github.com/krish7919/vault-plugin-auth-kubernetes",
-			"revision": "fcd69aa4ae3363100447085d9a6e92958eab1bd8",
-			"revisionTime": "2018-06-04T18:01:33Z"
+			"revision": "3f8bf20a5fe20cbbcc567f669d9e5310c1a756e2",
+			"revisionTime": "2019-01-15T19:28:40Z"
 		},
 		{
 			"checksumSHA1": "V1a5/Ra9HXKNuArt5WKUqu+Jxt8=",
